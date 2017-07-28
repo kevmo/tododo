@@ -1,7 +1,84 @@
 <!DOCTYPE html>
 <html>
-<head></head>
+<head>
+
+    <style>
+        h1 {
+            text-transform: uppercase;
+        }
+    </style>
+
+</head>
 <body>
-HARO WORLD 
+
+    <h1>to-do</h1>
+
+    <label>new todo:</label>
+    <input
+            type="text"
+            id="newTodo"
+            placeholder="wtf u wanna do"
+    />
+    <button id="todoButton">DO IT</button>
+
+    <ul
+        id="todoList"
+        >
+
+    </ul>
+
+
+    <script>
+        console.log("hi");
+
+        var todoButton = document.getElementById("todoButton");
+
+        function getText(){
+            var text = document.getElementById("newTodo").value;
+            console.log(text);
+            return text;
+        }
+
+
+
+
+
+        function Todo(text) {
+            this.text = text;
+        }
+
+        Todo.prototype.render = function(){
+
+            var li = document.createElement("li");
+
+            li.innerHTML = this.text;
+
+            document.getElementById("todoList").appendChild(li);
+
+        };
+
+
+
+
+
+
+        function createNewTodo(text) {
+            var newTodo = new Todo(text);
+            return newTodo;
+        }
+
+
+
+        todoButton.addEventListener("click", function(e){
+            var text = getText();
+            var newTodo = createNewTodo(text);
+            newTodo.render();
+
+        });
+
+
+
+
+    </script>
 </body>
 </html>
